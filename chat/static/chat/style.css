@@ -4,17 +4,20 @@ body{
 }
 #chat-box{
   padding: 20px;
-  border: 5px solid white;
-  width: 80%;
+  width: 90%;
 }
 #chat-control{
   margin: 0px 0px 50px 0px;
   padding: 10px;
   background-color: white;
   text-align: center;
+  position: sticky;
+  top: 0;
+  -webkit-transform: translateZ(0);
 }
 #submit-but{
   width: 80%;
+  border-radius: 0;
 }
 #handle{
   width: 80%;
@@ -25,4 +28,9 @@ body{
 
 .center {
     margin: auto;
+}
+span{
+  width: 80%;
+  border: 5px solid green;
+  word-wrap: break-word;
 }

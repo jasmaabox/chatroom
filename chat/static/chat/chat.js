@@ -16,13 +16,11 @@ chatsock.onmessage = function(message){
   var msg = document.getElementById('message');
   // pop if greater than limit
   if(rowCount > 20){
-    table.deleteRow(rowCount -1);
+    table.deleteRow(rowCount - 1);
   }
 
   // clear message
-  var val = msg.getAttribute("value");
-  val = "";
-  console.log(msg);
+  document.getElementById("message").value = "";
 };
 
 // Sends data when form is submitted

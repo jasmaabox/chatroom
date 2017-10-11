@@ -19,6 +19,13 @@ def ws_receive(message):
     label = message.channel_session['room']
     room = Room.objects.get(label=label)
     data = json.loads(message['text'])
+
+    # error checks
+    if len(data['handle']) == 0 or len(data['handle']) > 12:
+        return
+    if len(data['message']) == 0:
+        return
+
     m = room.messages.create(handle=data['handle'], message=data['message'])
     Group('chat-'+label).send({'text':json.dumps(m.as_dict())})
 
