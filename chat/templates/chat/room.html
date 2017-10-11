@@ -5,21 +5,23 @@
   </head>
 
   <body>
-    <h1>I am a room</h1>
 
     <form id="chatform">
-      <table id="chat" class="center">
-        {% for message in messages %}
-          <tr>
-            <td>{{ message.handle }}: {{ message.message }}</td>
-          </tr>
-        {% endfor %}
-      </table>
 
-      <div id="chat-control"class="center">
-        <input id="handle" type="text" placeholder="handle">
-        <input id="message" type="text" placeholder="message">
-        <button type="submit">Send</button>
+      <div id="chat-control">
+        <input id="handle" type="text" placeholder="handle"><br>
+        <input id="message" type="text" placeholder="message"><br>
+        <button id="submit-but" type="submit" class="btn btn-secondary">Send</button>
+      </div>
+
+      <div id="chat-box" class="center">
+        <table id="chat">
+          {% for message in messages %}
+            <tr>
+              <td><font color="green">{{ message.handle }}:</font> {{ message.message }}</td>
+            </tr>
+          {% endfor %}
+        </table>
       </div>
     </form>
 

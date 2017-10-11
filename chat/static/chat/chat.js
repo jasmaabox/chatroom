@@ -4,11 +4,25 @@ var chatsock = new ReconnectingWebSocket(ws_scheme + '://' + window.location.hos
 // Formats chat message in table
 chatsock.onmessage = function(message){
   var data = JSON.parse(message.data);
-  $('#chat').append(
+
+  $('#chat').prepend(
     '<tr>' +
-    '<td>' + data.handle + ": " + data.message + '</td>'
+    '<td><font color="green">' + data.handle + ":</font> " + data.message + '</td>'
     + '</tr>'
   );
+
+  var table = document.getElementById('chat');
+  var rowCount = table.rows.length;
+  var msg = document.getElementById('message');
+  // pop if greater than limit
+  if(rowCount > 20){
+    table.deleteRow(rowCount -1);
+  }
+
+  // clear message
+  var val = msg.getAttribute("value");
+  val = "";
+  console.log(msg);
 };
 
 // Sends data when form is submitted

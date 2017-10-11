@@ -2,14 +2,26 @@ body{
   background-color: black;
   color: white;
 }
-#chat{
+#chat-box{
+  padding: 20px;
   border: 5px solid white;
-  padding: 100px;
-  width: 90%;
+  width: 80%;
 }
 #chat-control{
+  margin: 0px 0px 50px 0px;
+  padding: 10px;
+  background-color: white;
+  text-align: center;
 }
-
+#submit-but{
+  width: 80%;
+}
+#handle{
+  width: 80%;
+}
+#message{
+  width: 80%;
+}
 
 .center {
     margin: auto;
