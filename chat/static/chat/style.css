@@ -1,0 +1,16 @@
+body{
+  background-color: black;
+  color: white;
+}
+#chat{
+  border: 5px solid white;
+  padding: 100px;
+  width: 90%;
+}
+#chat-control{
+}
+
+
+.center {
+    margin: auto;
+}

@@ -1,21 +1,33 @@
-I am a room
-{% load staticfiles %}
+<html>
+  <head>
+    {% load staticfiles %}
+    <title>Chatroom</title>
+  </head>
 
-<form id="chatform">
-  <table id="chat">
-    {% for message in messages %}
-      <tr>
-        <td>{{ message.handle }}: {{ message.message }}</td>
-      </tr>
-    {% endfor %}
-  </table>
+  <body>
+    <h1>I am a room</h1>
+
+    <form id="chatform">
+      <table id="chat" class="center">
+        {% for message in messages %}
+          <tr>
+            <td>{{ message.handle }}: {{ message.message }}</td>
+          </tr>
+        {% endfor %}
+      </table>
+
+      <div id="chat-control"class="center">
+        <input id="handle" type="text" placeholder="handle">
+        <input id="message" type="text" placeholder="message">
+        <button type="submit">Send</button>
+      </div>
+    </form>
 
 
-  <input id="handle" type="text" placeholder="handle">
-  <input id="message" type="text" placeholder="message">
-  <button type="submit">Send</button>
-</form>
-
-<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/reconnecting-websocket/1.0.0/reconnecting-websocket.js"></script>
-<script type="text/javascript" src='{% static "/chat/chat.js" %}'></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/reconnecting-websocket/1.0.0/reconnecting-websocket.js"></script>
+    <script type="text/javascript" src='{% static "/chat/chat.js" %}'></script>
+    <link rel="stylesheet" href='{% static "/chat/style.css" %}'>
+  </body>
+</html>
