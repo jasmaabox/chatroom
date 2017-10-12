@@ -1,0 +1,24 @@
+<html>
+  <head>
+    <title>Chatroom - Home</title>
+    {% load staticfiles %}
+
+    <script>
+      function goToRoom(){
+        var room = document.getElementById("room-name").value;
+        window.location.href = "/chat/" + room + "/";
+        return false;
+      }
+    </script>
+  </head>
+
+  <body>
+    <div style="text-align: center;">
+      <h1>Welcome to the Chatroom</h1>
+      <input id="room-name" type="text"><br><br>
+      <button onclick="goToRoom()">Go to room</button>
+  </div>
+
+    <link rel="stylesheet" href='{% static "/chat/style.css" %}'>
+  </body>
+</html>
