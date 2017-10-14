@@ -15,7 +15,7 @@ chatsock.onmessage = function(message){
   var rowCount = table.rows.length;
   var msg = document.getElementById('message');
   // pop if greater than limit
-  if(rowCount > 20){
+  if(rowCount > 50){
     table.deleteRow(rowCount - 1);
   }
 
