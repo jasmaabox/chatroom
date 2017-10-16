@@ -5,9 +5,17 @@ var chatsock = new ReconnectingWebSocket(ws_scheme + '://' + window.location.hos
 chatsock.onmessage = function(message){
   var data = JSON.parse(message.data);
 
+  // Sanitize
+  var clean_handle = DOMPurify.sanitize(data.handle, {SAFE_FOR_TEMPLATES: true});
+  var clean_message = DOMPurify.sanitize(data.message, {SAFE_FOR_TEMPLATES: true});
+
+  if(clean_message == ""){
+    clean_message = "<i>Message removed</i>"
+  }
+
   $('#chat').prepend(
     '<tr>' +
-    '<td><font color="green">' + data.handle + ":</font> " + data.message + '</td>'
+    '<td><font color="green">' + clean_handle + ":</font> " + clean_message + '</td>'
     + '</tr>'
   );
 
