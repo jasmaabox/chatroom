@@ -17,3 +17,4 @@ Debug and security testing
   - [stnev](https://github.com/stnev)
   - Ben N.
   - Prem C.
+  - Akash C.
