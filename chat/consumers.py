@@ -21,9 +21,9 @@ def ws_receive(message):
     data = json.loads(message['text'])
 
     # error checks
-    if len(data['handle']) == 0 or len(data['handle']) > 12:
+    if len(data['handle'].strip()) == 0 or len(data['handle'].strip()) > 12:
         return
-    if len(data['message']) == 0:
+    if len(data['message'].strip()) == 0:
         return
 
     m = room.messages.create(handle=data['handle'], message=data['message'])

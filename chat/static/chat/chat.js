@@ -1,17 +1,19 @@
 var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
 var chatsock = new ReconnectingWebSocket(ws_scheme + '://' + window.location.host + window.location.pathname);
 
+// Clean string
+function clean_str(s){
+  s = DOMPurify.sanitize(s, {ALLOWED_TAGS: []});
+  return s;
+}
+
 // Formats chat message in table
 chatsock.onmessage = function(message){
   var data = JSON.parse(message.data);
 
   // Sanitize
-  var clean_handle = DOMPurify.sanitize(data.handle, {SAFE_FOR_TEMPLATES: true});
-  var clean_message = DOMPurify.sanitize(data.message, {SAFE_FOR_TEMPLATES: true});
-
-  if(clean_message == ""){
-    clean_message = "<i>Message removed</i>"
-  }
+  var clean_handle = clean_str(data.handle);
+  var clean_message = clean_str(data.message);
 
   $('#chat').prepend(
     '<tr>' +
@@ -26,17 +28,18 @@ chatsock.onmessage = function(message){
   if(rowCount > 50){
     table.deleteRow(rowCount - 1);
   }
-
-  // clear message
-  document.getElementById("message").value = "";
 };
 
 // Sends data when form is submitted
 $('#chatform').on('submit', function(event){
   var message = {
-    handle: $('#handle').val(),
-    message: $('#message').val(),
+    handle: clean_str($('#handle').val()),
+    message: clean_str($('#message').val()),
   }
   chatsock.send(JSON.stringify(message));
+
+  // clear message
+  document.getElementById("message").value = "";
+
   return false;
 });
