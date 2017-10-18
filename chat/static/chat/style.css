@@ -35,3 +35,12 @@ table{
 .center {
     margin: auto;
 }
+.room-box{
+  border-style: solid;
+  border-width: 5px;
+  border-color: black;
+  padding: 80px;
+  margin: 10%;
+  color: black;
+  text-align: center;
+}
