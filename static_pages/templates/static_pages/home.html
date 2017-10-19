@@ -1,0 +1,28 @@
+<html>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <title>Chatroom - Home</title>
+    {% load staticfiles %}
+
+    <script>
+      function goToRoom(){
+        var room = document.getElementById("room-name").value;
+        window.location.href = "/chat/" + room + "/";
+        return false;
+      }
+    </script>
+  </head>
+
+  <body>
+    <form class="room-box" onsubmit="return goToRoom()">
+      <br>
+      <h1>Welcome to the Chatroom</h1>
+      <br>
+      <input class="center" id="room-name" type="text"><br><br>
+      <button type="submit" class="btn btn-primary">Go to room</button>
+    </form>
+
+    <link rel="stylesheet" href='{% static "/chat/style.css" %}'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+  </body>
+</html>
