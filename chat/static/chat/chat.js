@@ -17,7 +17,7 @@ chatsock.onmessage = function(message){
 
   $('#chat').prepend(
     '<tr>' +
-    '<td><font color="green">' + clean_handle + ":</font> " + clean_message + '</td>'
+    '<td><font color="green" dir="ltr">>' + clean_handle + ":</font> " + clean_message + '</td>'
     + '</tr>'
   );
 
