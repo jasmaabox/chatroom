@@ -1,5 +1,0 @@
-﻿django
-django-channels
-asgi_redis
-daphne
-django_compressor
