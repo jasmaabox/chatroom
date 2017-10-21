@@ -26,7 +26,7 @@ def ws_receive(message):
     if len(data['message'].strip()) == 0:
         return
 
-    m = room.messages.create(handle=data['handle'], message=data['message'])
+    m = room.messages.create(handle=data['handle'],handle_color=data['handle_color'], message=data['message'])
     Group('chat-'+label).send({'text':json.dumps(m.as_dict())})
 
 @channel_session

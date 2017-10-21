@@ -13,11 +13,12 @@ chatsock.onmessage = function(message){
 
   // Sanitize
   var clean_handle = clean_str(data.handle);
+  var clean_handle_color = clean_str(data.handle_color);
   var clean_message = clean_str(data.message);
 
   $('#chat').prepend(
     '<tr>' +
-    '<td><font color="green" dir="ltr">' + clean_handle + ":</font> " + clean_message + '</td>'
+    '<td><font style="color:'+ clean_handle_color +'" dir="ltr">' + clean_handle + ":</font> " + clean_message + '</td>'
     + '</tr>'
   );
 
@@ -34,8 +35,12 @@ chatsock.onmessage = function(message){
 $('#chatform').on('submit', function(event){
   var message = {
     handle: clean_str($('#handle').val()),
+    handle_color: clean_str($('#handle-color').css('backgroundColor')),
     message: clean_str($('#message').val()),
   }
+
+  console.log(message);
+
   chatsock.send(JSON.stringify(message));
 
   // clear message

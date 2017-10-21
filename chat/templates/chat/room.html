@@ -10,6 +10,7 @@
     <form id="chatform">
 
       <div id="chat-control">
+        <input id="handle-color" class="jscolor {valueElement:null,value:'00ff00'}" disabled><br>
         <input id="handle" type="text" placeholder="handle" autocomplete="off" maxlength="12"><br>
         <input id="message" type="text" placeholder="message" autocomplete="off"><br>
         <button id="submit-but" type="submit" class="btn btn-secondary">Post</button>
@@ -19,7 +20,7 @@
         <table id="chat">
           {% for message in messages %}
             <tr>
-              <td><font color="green" dir="ltr">{{ message.handle }}:</font> {{ message.message }}</td>
+              <td><font style="color:{{ message.handle_color }}" dir="ltr">{{ message.handle }}:</font> {{ message.message }}</td>
             </tr>
           {% endfor %}
         </table>
@@ -30,6 +31,8 @@
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/reconnecting-websocket/1.0.0/reconnecting-websocket.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/0.8.4/purify.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jscolor/2.0.4/jscolor.js"></script>
+
     <script type="text/javascript" src='{% static "/chat/chat.js" %}'></script>
     <link rel="stylesheet" href='{% static "/chat/style.css" %}'>
   </body>

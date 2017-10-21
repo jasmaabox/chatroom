@@ -8,6 +8,7 @@ class Room(models.Model):
 class Message(models.Model):
     room = models.ForeignKey(Room, related_name='messages')
     handle = models.TextField()
+    handle_color = models.TextField()
     message = models.TextField()
     timestamp = models.DateTimeField(default=timezone.now, db_index=True)
 
@@ -19,4 +20,8 @@ class Message(models.Model):
         return self.timestamp.strftime('%b %-d %-I:%M %p')
 
     def as_dict(self):
-        return {'handle': self.handle, 'message': self.message}
+        return {
+                'handle': self.handle,
+                'handle_color':self.handle_color,
+                'message': self.message,
+                }
