@@ -39,12 +39,17 @@ $('#chatform').on('submit', function(event){
     message: clean_str($('#message').val()),
   }
 
-  console.log(message);
+  console.log();
 
   chatsock.send(JSON.stringify(message));
 
   // clear message
   document.getElementById("message").value = "";
+
+  if(message['handle'].trim() != ""){
+    setCookie('handle', message['handle'])
+    $('#handle').prop('disabled', true);
+  }
 
   return false;
 });
