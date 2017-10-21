@@ -1,6 +1,5 @@
 function setCookie(name, val){
   document.cookie = name+"="+val;
-  $('#handle').prop('disabled', true);
 }
 
 function setColorPref(picker){
