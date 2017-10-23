@@ -1,9 +1,12 @@
+var glob_handle_color = "#00ff00";
+
 function setCookie(name, val){
   document.cookie = name+"="+val;
 }
 
 function setColorPref(picker){
-  setCookie('handle_color', picker.toHEXString());
+  glob_handle_color = picker.toHEXString();
+  setCookie('handle_color', glob_handle_color);
 }
 
 function loadUserPrefs(){
@@ -27,5 +30,6 @@ function loadUserPrefs(){
     $('#handle').prop('value', handle);
     $('#handle').prop('disabled', true);
   }
-  document.getElementById('handle-color').jscolor.fromString(handle_color);
+  glob_handle_color = handle_color;
+  document.getElementById('handle-color').jscolor.fromString(glob_handle_color);
 }

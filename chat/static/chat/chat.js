@@ -7,13 +7,22 @@ function clean_str(s){
   return s;
 }
 
+function fix_color(s){
+  if(/^#[0-9A-F]{6}$/i.test(s)){
+    return s;
+  }
+  else{
+    return "#00ff00";
+  }
+}
+
 // Formats chat message in table
 chatsock.onmessage = function(message){
   var data = JSON.parse(message.data);
 
   // Sanitize
   var clean_handle = clean_str(data.handle);
-  var clean_handle_color = clean_str(data.handle_color);
+  var clean_handle_color = fix_color(data.handle_color);
   var clean_message = clean_str(data.message);
 
   $('#chat').prepend(
@@ -35,7 +44,7 @@ chatsock.onmessage = function(message){
 $('#chatform').on('submit', function(event){
   var message = {
     handle: clean_str($('#handle').val()),
-    handle_color: clean_str($('#handle-color').css('backgroundColor')),
+    handle_color: glob_handle_color,
     message: clean_str($('#message').val()),
   }
 
