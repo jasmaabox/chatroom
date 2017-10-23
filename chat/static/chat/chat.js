@@ -44,7 +44,7 @@ chatsock.onmessage = function(message){
 $('#chatform').on('submit', function(event){
   var message = {
     handle: clean_str($('#handle').val()),
-    handle_color: glob_handle_color,
+    handle_color: fix_color(glob_handle_color),
     message: clean_str($('#message').val()),
   }
 
