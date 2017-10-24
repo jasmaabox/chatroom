@@ -1,5 +1,5 @@
 from django.db import models
-from django.utils import timezone
+from django.utils import timezone, html
 
 class Room(models.Model):
     name = models.TextField()
@@ -21,7 +21,7 @@ class Message(models.Model):
 
     def as_dict(self):
         return {
-                'handle': self.handle,
+                'handle': html.escape(self.handle),
                 'handle_color':self.handle_color,
-                'message': self.message,
+                'message': html.escape(self.message),
                 }

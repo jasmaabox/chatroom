@@ -3,6 +3,8 @@ from channels.sessions import channel_session
 from .models import Room
 import json
 
+from . import utils
+
 @channel_session
 def ws_connect(message):
 
@@ -26,7 +28,11 @@ def ws_receive(message):
     if len(data['message'].strip()) == 0:
         return
 
-    m = room.messages.create(handle=data['handle'],handle_color=data['handle_color'], message=data['message'])
+    m = room.messages.create(
+        handle=data['handle'],
+        handle_color=utils.fix_color(data['handle_color']),
+        message=data['message'],
+    )
     Group('chat-'+label).send({'text':json.dumps(m.as_dict())})
 
 @channel_session
