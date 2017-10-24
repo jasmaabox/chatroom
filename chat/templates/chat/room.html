@@ -20,7 +20,7 @@
         <table id="chat">
           {% for message in messages %}
             <tr>
-              <td><font style="color:{{ message.handle_color }}" dir="ltr">{{ message.handle }}:</font> {{ message.message }}</td>
+              <td><font style=color:{{ message.handle_color }} dir="ltr">{{ message.handle }}:</font> {{ message.message }}</td>
             </tr>
           {% endfor %}
         </table>
