@@ -2,7 +2,7 @@ import re
 
 def fix_color(s):
     p = re.search(r'^#(?:[0-9a-fA-F]{3}){1,2}$', s)
-    if p and get_rgb_value(s) > 64:
+    if p and get_rgb_value(s) > 192:
         return s
     else:
         return '#00ff00'
