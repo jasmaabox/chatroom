@@ -25,7 +25,7 @@ def ws_receive(message):
     # error checks
     if len(data['handle'].strip()) == 0 or len(data['handle'].strip()) > 12:
         return
-    if len(data['message'].strip()) == 0:
+    if len(data['message'].strip()) == 0 or len(data['message'].strip()) > 1000:
         return
 
     m = room.messages.create(
