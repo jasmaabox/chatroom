@@ -44,3 +44,11 @@ table{
   color: black;
   text-align: center;
 }
+.footer{
+  background-color: #e5e5e5;
+  padding: 2%;
+}
+.icon{
+  font-size: 30px;
+  color: black;
+}
