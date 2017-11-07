@@ -1,23 +1,34 @@
 from django.db import models
 from django.utils import timezone, html
 
+"""
+TODO:
+client will ping room
+if a room has been pinged within the last 5 minutes, it will be active
+"""
+
 class Room(models.Model):
     name = models.TextField()
     label = models.SlugField(unique=True)
+    currentTossUp = models.ForeignKey(TossUp)
+    isActive = models.BooleanField()
 
-class Message(models.Model):
+    def __str__(self):
+        return self.name + "," + self.label
+
+class TossUp(models.Model):
+    label = models.SlugField(unique=True)
+    question = models.TextField()
+    answer = models.TextField()
+
+class Buzz(models.Model):
     room = models.ForeignKey(Room, related_name='messages')
+
     handle = models.TextField()
     handle_color = models.TextField()
-    message = models.TextField()
+    answer = models.TextField()
+    isCorrect = models.BooleanField()
     timestamp = models.DateTimeField(default=timezone.now, db_index=True)
-
-    def __unicode__(self):
-        return '[{timestamp}] {handle}: {message}'.format(**self.as_dict())
-
-    @property
-    def formatted_timestamp(self):
-        return self.timestamp.strftime('%b %-d %-I:%M %p')
 
     def as_dict(self):
         return {
