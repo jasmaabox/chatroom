@@ -16,8 +16,11 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 
+from static_pages import views
+
 urlpatterns = [
     url(r'^chat/', include('chat.urls')),
     url(r'^admin/', admin.site.urls),
-    url(r'^$', include('static_pages.urls')),
+    url(r'^liability/', views.liability, name='liability'),
+    url(r'^$', views.home, name='home'),
 ]
