@@ -6,7 +6,7 @@ class Room(models.Model):
     label = models.SlugField(unique=True)
 
 class Message(models.Model):
-    room = models.ForeignKey(Room, related_name='messages')
+    room = models.ForeignKey(Room, on_delete=models.CASCADE, related_name='messages')
     handle = models.TextField()
     handle_color = models.TextField()
     message = models.TextField()

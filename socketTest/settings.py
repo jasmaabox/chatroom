@@ -103,11 +103,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 CHANNEL_LAYERS = {
     "default": {
-        "BACKEND": "asgi_redis.RedisChannelLayer",
-        "CONFIG": {
-            "hosts": [os.environ.get('REDIS_URL', 'redis://localhost:6379')],
-        },
-        "ROUTING": "chat.routing.channel_routing",
+        "BACKEND": "asgiref.inmemory.ChannelLayer",
+        "ROUTING": "socketTest.routing.channel_routing",
     },
 }
 

@@ -1,5 +1,4 @@
-﻿django
-django-channels
-asgi_redis
-daphne
-django_compressor
+channels==1.1.7
+django==1.10.7
+asgi-redis==1.4.3
+pywin32
