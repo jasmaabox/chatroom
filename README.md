@@ -2,7 +2,7 @@
 
 Django channels chatroom example to-be-expanded-upon
 
-Check it out live [here](http://www.chatteringwith.me)!
+~Check it out live [here](http://www.chatteringwith.me)!~
 
 ### Installation and Running
   - `pip install -r requirements.txt`
